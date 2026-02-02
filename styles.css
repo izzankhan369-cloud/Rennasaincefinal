@@ -1,0 +1,595 @@
+/* ============================================
+   RENAISSANCE - STYLE.CSS
+   Premium Educational Coaching Brand
+   ============================================ */
+
+/* ========== CSS RESET & ROOT VARIABLES ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Palette */
+    --espresso: #2A1B12;
+    --cream: #F5F1E6;
+    --tan: #D2B48C;
+    --gold: #D4AF37;
+    --white: #FFFFFF;
+    --dark-overlay: rgba(42, 27, 18, 0.85);
+    
+    /* Typography */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+    
+    /* Spacing */
+    --section-padding: 8rem 0;
+    --container-width: 1200px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--cream);
+    color: var(--espresso);
+    cursor: none;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ========== CUSTOM MAGNETIC CURSOR ========== */
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--gold);
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 10000;
+    transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease;
+    mix-blend-mode: difference;
+}
+
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--tan);
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.2s ease;
+}
+
+.cursor-dot.expand {
+    width: 20px;
+    height: 20px;
+}
+
+.cursor-outline.expand {
+    width: 60px;
+    height: 60px;
+    border-color: var(--gold);
+}
+
+/* ========== HAMBURGER MENU ========== */
+.hamburger-menu {
+    position: fixed;
+    top: 2.5rem;
+    right: 2.5rem;
+    z-index: 1001;
+    background: transparent;
+    border: none;
+    cursor: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+.hamburger-line {
+    width: 35px;
+    height: 2px;
+    background-color: var(--espresso);
+    transition: all 0.3s ease;
+}
+
+.hamburger-menu:hover .hamburger-line {
+    background-color: var(--gold);
+}
+
+/* ========== FULLSCREEN NAVIGATION ========== */
+.fullscreen-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--tan);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-100%);
+    transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.fullscreen-nav.active {
+    transform: translateY(0);
+}
+
+.close-menu {
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;
+    font-size: 4rem;
+    background: transparent;
+    border: none;
+    color: var(--espresso);
+    cursor: none;
+    line-height: 1;
+    font-weight: 300;
+    transition: color 0.3s ease;
+}
+
+.close-menu:hover {
+    color: var(--gold);
+}
+
+.nav-links {
+    list-style: none;
+    text-align: center;
+}
+
+.nav-links li {
+    margin: 2.5rem 0;
+}
+
+.nav-link {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    color: var(--espresso);
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.nav-link:hover {
+    color: var(--gold);
+    transform: translateX(10px);
+}
+
+/* ========== FLOATING BUTTONS ========== */
+.floating-btn {
+    position: fixed;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: none;
+}
+
+.floating-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+}
+
+.floating-btn svg {
+    width: 35px;
+    height: 35px;
+}
+
+.whatsapp-btn {
+    bottom: 2rem;
+    right: 2rem;
+    background-color: #25D366;
+    color: var(--white);
+}
+
+.instagram-btn {
+    bottom: 2rem;
+    left: 2rem;
+    background: linear-gradient(135deg, #833AB4, #FD1D1D, #FCAF45);
+    color: var(--white);
+}
+
+/* ========== HERO SECTION ========== */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: var(--espresso);
+}
+
+.three-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(42, 27, 18, 0.7), rgba(210, 180, 140, 0.3));
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--cream);
+}
+
+.brand-name {
+    font-family: var(--font-heading);
+    font-size: 7rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+    color: var(--gold);
+}
+
+.hero-subtitle {
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--cream);
+    letter-spacing: 0.02em;
+}
+
+/* ========== CONTAINER & SECTIONS ========== */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section-heading {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 4rem;
+    color: var(--espresso);
+}
+
+/* ========== PHILOSOPHY SECTION ========== */
+.philosophy-section {
+    padding: var(--section-padding);
+    background-color: var(--cream);
+}
+
+.philosophy-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.philosophy-text {
+    font-size: 1.4rem;
+    line-height: 2;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--espresso);
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+/* ========== TESTIMONIALS SECTION ========== */
+.testimonials-section {
+    padding: var(--section-padding);
+    background-color: var(--espresso);
+}
+
+.testimonials-section .section-heading {
+    color: var(--cream);
+}
+
+.testimonials-carousel {
+    display: flex;
+    gap: 2.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 2rem 0;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.testimonials-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.testimonial-card {
+    min-width: 450px;
+    padding: 3rem;
+    scroll-snap-align: center;
+    transition: transform 0.3s ease;
+}
+
+/* Glassmorphism Effect */
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.testimonial-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.testimonial-text {
+    font-size: 1.2rem;
+    line-height: 1.9;
+    color: var(--cream);
+    margin-bottom: 2rem;
+    font-style: italic;
+    flex-grow: 1;
+}
+
+.testimonial-author {
+    text-align: right;
+}
+
+.author-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+}
+
+.author-location {
+    font-size: 0.95rem;
+    color: var(--tan);
+}
+
+/* 3D Tilt Card Effect */
+.tilt-card {
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease;
+}
+
+/* ========== INSTAGRAM SECTION ========== */
+.instagram-section {
+    padding: var(--section-padding);
+    background-color: var(--cream);
+    text-align: center;
+}
+
+.instagram-description {
+    font-size: 1.3rem;
+    color: var(--espresso);
+    margin-bottom: 3rem;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.instagram-cta-btn {
+    display: inline-block;
+    padding: 1.2rem 3rem;
+    background: linear-gradient(135deg, var(--gold), var(--tan));
+    color: var(--espresso);
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: none;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+.instagram-cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.6);
+}
+
+/* ========== ENROLLMENT SECTION ========== */
+.enrollment-section {
+    padding: var(--section-padding);
+    background-color: var(--espresso);
+}
+
+.enrollment-section .section-heading {
+    color: var(--cream);
+}
+
+.enrollment-form {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.form-label {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--tan);
+    margin-bottom: 0.7rem;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 1.2rem;
+    border: 2px solid var(--tan);
+    border-radius: 10px;
+    background-color: rgba(245, 241, 230, 0.1);
+    color: var(--cream);
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    background-color: rgba(245, 241, 230, 0.15);
+}
+
+.form-textarea {
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1.3rem;
+    background: linear-gradient(135deg, var(--gold), var(--tan));
+    color: var(--espresso);
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+}
+
+/* ========== SUCCESS MODAL ========== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.modal-overlay.show {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    text-align: center;
+    padding: 4rem;
+    max-width: 500px;
+    animation: modalSlideIn 0.5s ease;
+}
+
+.glass-modal {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 2px solid rgba(212, 175, 55, 0.5);
+    border-radius: 25px;
+}
+
+.modal-icon {
+    font-size: 5rem;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+}
+
+.modal-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--cream);
+    margin-bottom: 1rem;
+}
+
+.modal-text {
+    font-size: 1.2rem;
+    color: var(--tan);
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ========== FOOTER ========== */
+.footer {
+    padding: 3rem 0;
+    background-color: var(--espresso);
+    text-align: center;
+    border-top: 1px solid var(--tan);
+}
+
+.footer-text {
+    color: var(--tan);
+    font-size: 1rem;
+}
+
+/* ========== REVEAL ANIMATION ========== */
+.reveal-element {
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 768px) {
+    .brand-name {
+        font-size: 4rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .section-heading {
+        font-size: 2.5rem;
+    }
+    
+    .nav-link {
+        font-size: 2.5rem;
+    }
+    
+    .testimonial-card {
+        min-width: 320px;
+    }
+    
+    .floating-btn {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .floating-btn svg {
+        width: 28px;
+        height: 28px;
+    }
+}
