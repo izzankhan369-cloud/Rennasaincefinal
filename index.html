@@ -3,159 +3,324 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Renaissance - Premium Educational Coaching</title>
+    <meta name="description" content="Renaissance - Building Confidence, Not Just Vocabulary. A premium English exposure program for children aged 8-16.">
+    <title>Renaissance - Premium English Exposure Program</title>
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sand: '#F5F1E6',
+                        espresso: '#2A1B12',
+                        gold: '#D4AF37',
+                        clay: '#E6BE8A',
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="custom-cursor"></div>
-    <div class="cursor-follower"></div>
+<body class="bg-sand text-espresso font-body antialiased">
 
-    <button class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-
-    <nav class="fullscreen-menu" id="fullscreenMenu">
-        <button class="close-menu" id="closeMenu">&times;</button>
-        <ul class="menu-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#philosophy">Philosophy</a></li>
-            <li><a href="#testimonials">Testimonials</a></li>
-            <li><a href="#enrollment">Enroll</a></li>
-            <li><a href="#faq">FAQ</a></li>
-        </ul>
-    </nav>
-
-    <a href="https://wa.me/917498836683" class="whatsapp-float" target="_blank">
-        <svg viewBox="0 0 32 32" fill="currentColor">
-            <path d="M16 0C7.164 0 0 7.163 0 16c0 2.825.738 5.607 2.139 8.064L.054 31.872l8.042-2.088A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.455c-2.471 0-4.898-.68-7.029-1.967l-.504-.299-5.229 1.358 1.397-5.115-.329-.524A13.396 13.396 0 012.545 16c0-7.427 6.028-13.455 13.455-13.455 7.426 0 13.455 6.028 13.455 13.455S23.426 29.455 16 29.455z"/>
-            <path d="M23.147 19.678c-.396-.198-2.348-1.158-2.711-1.29-.364-.132-.629-.198-.893.198-.265.396-1.025 1.29-1.256 1.555-.231.265-.462.298-.859.1-.396-.199-1.674-.617-3.188-1.967-1.179-1.05-1.975-2.347-2.206-2.743-.231-.396-.025-.611.174-.808.178-.178.396-.462.594-.694.198-.231.265-.396.396-.661.132-.265.066-.495-.033-.694-.099-.198-.893-2.151-1.224-2.943-.322-.771-.65-.667-.893-.679-.231-.012-.495-.015-.76-.015s-.694.099-1.058.495c-.364.396-1.389 1.356-1.389 3.309s1.422 3.838 1.62 4.103c.198.264 2.794 4.267 6.77 5.982.946.408 1.685.652 2.261.835.95.302 1.814.259 2.497.157.762-.114 2.348-.96 2.679-1.888.331-.927.331-1.721.231-1.888-.099-.165-.364-.264-.76-.462z"/>
-        </svg>
-    </a>
-
-    <section id="hero" class="hero-section">
-        <canvas id="canvas3d"></canvas>
-        <div class="hero-content">
-            <h1 class="brand-name">Renaissance</h1>
-            <p class="typewriter" id="typewriter"></p>
-        </div>
-    </section>
-
-    <section id="philosophy" class="philosophy-section">
-        <div class="container">
-            <h2 class="section-title fade-up">Our Philosophy</h2>
-            <p class="philosophy-text fade-up">Renaissance isn't just tuition; it's about sculpting a child's potential. We bridge the gap between where your child is and where they are meant to be.</p>
-            <p class="philosophy-text fade-up">Every session is designed to nurture intellectual curiosity, build unshakeable confidence, and unlock the masterpiece within.</p>
-        </div>
-    </section>
-
-    <section id="testimonials" class="testimonials-section">
-        <div class="container">
-            <h2 class="section-title">What Parents Say</h2>
-            <div class="testimonial-carousel">
-                <div class="testimonial-card glass-card tilt-card">
-                    <p class="testimonial-text">"Renaissance transformed my daughter's approach to learning. She went from struggling to thriving in just three months."</p>
-                    <p class="testimonial-author">— Priya Sharma, Mumbai</p>
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center px-4 md:px-8 lg:px-16 py-20">
+        <div class="max-w-7xl mx-auto w-full">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Left: Content -->
+                <div data-aos="fade-up" data-aos-duration="1000">
+                    <h1 class="font-heading text-5xl md:text-6xl lg:text-7xl text-espresso mb-6 leading-tight">
+                        Building Confidence,<br/>
+                        <span class="text-gold">Not Just Vocabulary.</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-espresso/80 mb-8 leading-relaxed">
+                        A practical English exposure program designed to help your child communicate naturally and confidently in real-world situations.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#admissions-form" class="btn-primary">
+                            Start Transformation
+                        </a>
+                        <button onclick="openWhatsApp()" class="btn-secondary">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                            </svg>
+                            Chat on WhatsApp
+                        </button>
+                    </div>
                 </div>
-                <div class="testimonial-card glass-card tilt-card">
-                    <p class="testimonial-text">"The personalized attention and innovative teaching methods are unmatched. My son now loves learning."</p>
-                    <p class="testimonial-author">— Rajesh Kumar, Delhi</p>
-                </div>
-                <div class="testimonial-card glass-card tilt-card">
-                    <p class="testimonial-text">"Investing in Renaissance was the best decision we made for our child's future. True excellence."</p>
-                    <p class="testimonial-author">— Anjali Mehta, Bangalore</p>
+                
+                <!-- Right: Visual Space -->
+                <div data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200" class="hidden md:block">
+                    <div class="aspect-square rounded-3xl bg-gradient-to-br from-clay/30 to-gold/20 backdrop-blur-sm border border-gold/20 shadow-2xl flex items-center justify-center">
+                        <div class="text-center p-8">
+                            <div class="text-7xl mb-4">📚</div>
+                            <p class="font-heading text-3xl text-espresso">Renaissance</p>
+                            <p class="text-espresso/60 mt-2">Excellence in Communication</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="enrollment" class="enrollment-section">
-        <div class="container">
-            <h2 class="section-title">Begin the Journey</h2>
-            <form id="enrollmentForm" class="enrollment-form">
-                <div class="form-group">
-                    <label for="name">Parent's Name</label>
-                    <input type="text" id="name" required>
+    <!-- Bento Grid Section -->
+    <section class="py-20 px-4 md:px-8 lg:px-16">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="font-heading text-4xl md:text-5xl text-center mb-16" data-aos="fade-up">
+                Why Parents Choose <span class="text-gold">Renaissance</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bento-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-5xl mb-4">💪</div>
+                    <h3 class="font-heading text-2xl mb-3">Build Confidence</h3>
+                    <p class="text-espresso/70 leading-relaxed">
+                        Your child learns to express themselves clearly and fearlessly in any situation.
+                    </p>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" required>
+                
+                <!-- Card 2 -->
+                <div class="bento-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-5xl mb-4">🗣️</div>
+                    <h3 class="font-heading text-2xl mb-3">Natural Fluency</h3>
+                    <p class="text-espresso/70 leading-relaxed">
+                        Speak English as naturally as breathing—no memorization, just real conversations.
+                    </p>
                 </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" required>
+                
+                <!-- Card 3 -->
+                <div class="bento-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-5xl mb-4">🌱</div>
+                    <h3 class="font-heading text-2xl mb-3">Organic Learning</h3>
+                    <p class="text-espresso/70 leading-relaxed">
+                        Through immersion and exposure, not textbooks and tests.
+                    </p>
                 </div>
-                <div class="form-group">
-                    <label for="goals">Child's Details & Goals</label>
-                    <textarea id="goals" rows="4" required></textarea>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="py-20 px-4 md:px-8 lg:px-16 bg-espresso/5">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="font-heading text-4xl md:text-5xl text-center mb-16" data-aos="fade-up">
+                Traditional Schooling vs <span class="text-gold">The Renaissance Way</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Traditional -->
+                <div class="comparison-card traditional" data-aos="fade-right">
+                    <h3 class="font-heading text-2xl mb-6 text-espresso/60">Traditional Approach</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3 mt-1">✗</span>
+                            <span class="text-espresso/70">Grammar-focused, mechanical learning</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3 mt-1">✗</span>
+                            <span class="text-espresso/70">Exam-oriented, no real-world practice</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3 mt-1">✗</span>
+                            <span class="text-espresso/70">Children memorize but can't communicate</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3 mt-1">✗</span>
+                            <span class="text-espresso/70">Fear of making mistakes</span>
+                        </li>
+                    </ul>
                 </div>
-                <button type="submit" class="submit-btn">Begin the Transformation</button>
+                
+                <!-- Renaissance -->
+                <div class="comparison-card renaissance" data-aos="fade-left">
+                    <h3 class="font-heading text-2xl mb-6 text-gold">The Renaissance Way</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="text-green-600 mr-3 mt-1">✓</span>
+                            <span class="text-espresso/90 font-medium">Communication-first approach</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-600 mr-3 mt-1">✓</span>
+                            <span class="text-espresso/90 font-medium">Real conversations, real confidence</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-600 mr-3 mt-1">✓</span>
+                            <span class="text-espresso/90 font-medium">Natural exposure through immersion</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-600 mr-3 mt-1">✓</span>
+                            <span class="text-espresso/90 font-medium">Safe environment to practice and grow</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact List Section -->
+    <section class="py-20 px-4 md:px-8 lg:px-16">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="font-heading text-4xl md:text-5xl text-center mb-4" data-aos="fade-up">
+                What Your Child Will <span class="text-gold">Achieve</span>
+            </h2>
+            <p class="text-center text-espresso/70 text-lg mb-16" data-aos="fade-up" data-aos-delay="100">
+                Measurable transformation in 12 weeks
+            </p>
+            
+            <div class="space-y-6">
+                <div class="impact-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="impact-icon">✓</div>
+                    <div>
+                        <h3 class="font-semibold text-lg mb-1">Speak Without Hesitation</h3>
+                        <p class="text-espresso/70">Express thoughts clearly in English, even in unfamiliar settings</p>
+                    </div>
+                </div>
+                
+                <div class="impact-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="impact-icon">✓</div>
+                    <div>
+                        <h3 class="font-semibold text-lg mb-1">Build Unshakeable Confidence</h3>
+                        <p class="text-espresso/70">Overcome fear of judgment and communicate with self-assurance</p>
+                    </div>
+                </div>
+                
+                <div class="impact-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="impact-icon">✓</div>
+                    <div>
+                        <h3 class="font-semibold text-lg mb-1">Think in English Naturally</h3>
+                        <p class="text-espresso/70">No more translating in their head—fluency becomes second nature</p>
+                    </div>
+                </div>
+                
+                <div class="impact-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="impact-icon">✓</div>
+                    <div>
+                        <h3 class="font-semibold text-lg mb-1">Excel in Real-World Situations</h3>
+                        <p class="text-espresso/70">From presentations to interviews, prepared for every opportunity</p>
+                    </div>
+                </div>
+                
+                <div class="impact-item" data-aos="fade-up" data-aos-delay="500">
+                    <div class="impact-icon">✓</div>
+                    <div>
+                        <h3 class="font-semibold text-lg mb-1">Develop Articulate Communication</h3>
+                        <p class="text-espresso/70">Not just speaking—expressing ideas with clarity and sophistication</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admissions Form Section -->
+    <section id="admissions-form" class="py-20 px-4 md:px-8 lg:px-16 bg-gradient-to-br from-clay/10 to-gold/5">
+        <div class="max-w-2xl mx-auto">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="font-heading text-4xl md:text-5xl mb-4">
+                    Begin Your Child's <span class="text-gold">Transformation</span>
+                </h2>
+                <p class="text-espresso/70 text-lg">
+                    Limited seats available. Connect with us today.
+                </p>
+            </div>
+            
+            <form id="admissionsForm" class="form-glass" data-aos="fade-up" data-aos-delay="200">
+                <div class="form-group">
+                    <label for="parentName" class="form-label">Parent's Name</label>
+                    <input 
+                        type="text" 
+                        id="parentName" 
+                        name="parentName" 
+                        class="form-input" 
+                        placeholder="Enter your name"
+                        required
+                    />
+                </div>
+                
+                <div class="form-group">
+                    <label for="childAge" class="form-label">Child's Age</label>
+                    <input 
+                        type="number" 
+                        id="childAge" 
+                        name="childAge" 
+                        class="form-input" 
+                        placeholder="8-16 years"
+                        min="8"
+                        max="16"
+                        required
+                    />
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        class="form-input" 
+                        placeholder="+91 XXXXX XXXXX"
+                        required
+                    />
+                </div>
+                
+                <button type="submit" class="form-submit-btn">
+                    Reserve Your Spot — Risk-Free
+                </button>
+                
+                <p class="text-center text-sm text-espresso/60 mt-4">
+                    🔒 Your information is safe and will never be shared
+                </p>
             </form>
-            <div id="successMessage" class="success-message">
-                <h3>Thank You!</h3>
-                <p>We'll be in touch shortly to begin your child's transformation.</p>
-            </div>
         </div>
     </section>
 
-    <section id="faq" class="faq-section">
-        <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <div class="faq-accordion">
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>What age groups do you teach?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>We work with students from grades 6-12, tailoring our approach to each age group's unique learning needs and developmental stage.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>What subjects do you cover?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>We specialize in English, Mathematics, Science, and personalized study skills coaching. Each program is customized to your child's goals.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>How are sessions conducted?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>We offer both in-person and online sessions with the same level of personalized attention and excellence in teaching methodology.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>What makes Renaissance different?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>We focus on developing critical thinking, creativity, and genuine understanding rather than rote memorization. Your child learns to think, not just to answer.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Renaissance. Sculpting Excellence.</p>
+    <!-- Footer -->
+    <footer class="py-8 px-4 border-t border-espresso/10">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="font-heading text-2xl text-espresso mb-2">Renaissance</p>
+            <p class="text-espresso/60 text-sm">
+                Building Confidence, One Conversation at a Time
+            </p>
+            <p class="text-espresso/40 text-xs mt-4">
+                © 2026 Renaissance. All rights reserved.
+            </p>
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Sticky Mobile Action Bar -->
+    <div class="mobile-action-bar md:hidden">
+        <p class="text-sm text-espresso/70">Have questions?</p>
+        <button onclick="openWhatsApp()" class="whatsapp-sticky-btn">
+            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            Chat Now
+        </button>
+    </div>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom JavaScript -->
     <script src="script.js"></script>
 </body>
-      </html>
+                                           </html>
