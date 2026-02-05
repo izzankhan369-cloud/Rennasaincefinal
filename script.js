@@ -1,107 +1,111 @@
 /* ============================================
-   RENAISSANCE - CONVERSION-OPTIMIZED STYLES
-   Premium Educational Landing Page
+   RENAISSANCE - CONVERSION JAVASCRIPT
+   WhatsApp Integration & Form Handling
    ============================================ */
 
-/* ========== BUTTON STYLES ========== */
-.btn-primary {
-    @apply inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-gold to-clay text-espresso font-semibold rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300;
+// ========== INITIALIZE AOS ANIMATIONS ==========
+AOS.init({
+    duration: 800,
+    easing: 'ease-out',
+    once: true,
+    offset: 100
+});
+
+// ========== WHATSAPP FUNCTION (ROBUST & FAIL-SAFE) ==========
+function openWhatsApp() {
+    const phoneNumber = '919518780921'; // Remove + and spaces
+    const message = encodeURIComponent('Hi! I am interested in the Renaissance program for my child. Could you share more details?');
+    
+    // Detect mobile or desktop
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    
+    let whatsappURL;
+    
+    if (isMobile) {
+        // Mobile: Use whatsapp://
+        whatsappURL = `whatsapp://send?phone=${phoneNumber}&text=${message}`;
+    } else {
+        // Desktop: Use web.whatsapp.com
+        whatsappURL = `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
+    }
+    
+    // Open in new tab
+    window.open(whatsappURL, '_blank');
 }
 
-.btn-secondary {
-    @apply inline-flex items-center justify-center px-8 py-4 bg-white/80 backdrop-blur-sm text-espresso font-semibold rounded-xl border-2 border-espresso/10 hover:border-gold hover:bg-white transition-all duration-300;
-}
+// ========== FORM SUBMISSION HANDLER ==========
+const admissionsForm = document.getElementById('admissionsForm');
 
-/* ========== BENTO CARD ========== */
-.bento-card {
-    @apply bg-white/60 backdrop-blur-sm p-8 rounded-2xl border border-espresso/10 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300;
-}
+admissionsForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Get form data
+    const parentName = document.getElementById('parentName').value;
+    const childAge = document.getElementById('childAge').value;
+    const phone = document.getElementById('phone').value;
+    
+    // Validate phone number (basic)
+    const phoneRegex = /^[6-9]\d{9}$/;
+    const cleanPhone = phone.replace(/\D/g, '');
+    
+    if (!phoneRegex.test(cleanPhone)) {
+        alert('Please enter a valid 10-digit phone number');
+        return;
+    }
+    
+    // Create personalized WhatsApp message
+    const personalizedMessage = encodeURIComponent(
+        `Hi! My name is ${parentName}. I'm interested in the Renaissance program for my ${childAge}-year-old child. Could you share more details?`
+    );
+    
+    const phoneNumber = '919518780921';
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    
+    let whatsappURL;
+    
+    if (isMobile) {
+        whatsappURL = `whatsapp://send?phone=${phoneNumber}&text=${personalizedMessage}`;
+    } else {
+        whatsappURL = `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${personalizedMessage}`;
+    }
+    
+    // Success feedback
+    const submitBtn = admissionsForm.querySelector('.form-submit-btn');
+    const originalText = submitBtn.textContent;
+    
+    submitBtn.textContent = '✓ Opening WhatsApp...';
+    submitBtn.classList.add('opacity-75');
+    
+    // Open WhatsApp
+    setTimeout(() => {
+        window.open(whatsappURL, '_blank');
+        
+        // Reset form
+        admissionsForm.reset();
+        submitBtn.textContent = originalText;
+        submitBtn.classList.remove('opacity-75');
+        
+        // Show success message
+        alert('Thank you! We\'ll connect with you shortly on WhatsApp.');
+    }, 500);
+});
 
-/* ========== COMPARISON CARDS ========== */
-.comparison-card {
-    @apply p-8 rounded-2xl border;
-}
+// ========== SMOOTH SCROLL FOR ANCHOR LINKS ==========
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
 
-.comparison-card.traditional {
-    @apply bg-white/40 border-espresso/10;
-}
-
-.comparison-card.renaissance {
-    @apply bg-gradient-to-br from-gold/10 to-clay/10 border-gold/30 shadow-xl relative;
-}
-
-.comparison-card.renaissance::before {
-    content: '';
-    @apply absolute -top-3 -right-3 w-12 h-12 bg-gold rounded-full flex items-center justify-center text-white font-bold;
-    content: '⭐';
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* ========== IMPACT ITEMS ========== */
-.impact-item {
-    @apply flex items-start gap-4 p-6 bg-white/60 backdrop-blur-sm rounded-xl border border-espresso/10 hover:shadow-lg transition-all duration-300;
-}
-
-.impact-icon {
-    @apply flex-shrink-0 w-10 h-10 bg-gradient-to-br from-gold to-clay rounded-full flex items-center justify-center text-white font-bold text-lg;
-}
-
-/* ========== FORM STYLES ========== */
-.form-glass {
-    @apply bg-white/70 backdrop-blur-xl p-8 md:p-12 rounded-3xl border border-gold/20 shadow-2xl;
-}
-
-.form-group {
-    @apply mb-6;
-}
-
-.form-label {
-    @apply block font-heading text-lg text-espresso mb-2;
-}
-
-.form-input {
-    @apply w-full px-5 py-4 bg-white/80 border-2 border-espresso/10 rounded-xl text-espresso placeholder-espresso/40 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all duration-300;
-}
-
-.form-submit-btn {
-    @apply w-full py-5 bg-gradient-to-r from-gold to-clay text-espresso font-heading text-xl font-semibold rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300;
-}
-
-/* ========== MOBILE ACTION BAR ========== */
-.mobile-action-bar {
-    @apply fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-lg border-t border-espresso/10 px-4 py-3 flex items-center justify-between shadow-2xl z-50;
-}
-
-.whatsapp-sticky-btn {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-green-500 text-white font-semibold rounded-full shadow-lg hover:bg-green-600 transition-all duration-300;
-}
-
-/* ========== SMOOTH SCROLL ========== */
-html {
-    scroll-behavior: smooth;
-}
-
-/* ========== PREVENT OVERFLOW ========== */
-body {
-    overflow-x: hidden;
-}
-
-/* ========== CUSTOM SCROLLBAR ========== */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: #F5F1E6;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #D4AF37;
-    border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #E6BE8A;
-       }
+// ========== CONSOLE SIGNATURE ==========
+console.log('%c Renaissance %c Premium Conversion Engine ', 
+    'background: #2A1B12; color: #D4AF37; font-size: 16px; padding: 8px;',
+    'background: #D4AF37; color: #2A1B12; font-size: 16px; padding: 8px;'
+);
